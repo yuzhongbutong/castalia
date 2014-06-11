@@ -7,10 +7,10 @@
 	<packaging>pom</packaging>
 	<name>castalia</name>
 	<modules>
-		<module>castalia-major-web</module>
-		<module>castalia-major-core</module>
-		<module>castalia-major-service</module>
-		<module>castalia-major-dao</module>
+		<module>castalia-apple-web</module>
+		<module>castalia-apple-service</module>
+		<module>castalia-apple-dao</module>
+		<module>castalia-core</module>
 	</modules>
 
 	<dependencies>
@@ -35,24 +35,14 @@
 			<version>4.0.3.RELEASE</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>4.3.4.Final</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>4.0.3.RELEASE</version>
 		</dependency>
 		<dependency>
-			<groupId>c3p0</groupId>
-			<artifactId>c3p0</artifactId>
-			<version>0.9.1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>fakepath</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-			<version>3.2.7</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+			<version>4.0.3.RELEASE</version>
 		</dependency>
 	</dependencies>
 
