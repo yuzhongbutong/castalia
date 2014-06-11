@@ -3,8 +3,8 @@
 	<name>castalia-apple-web</name>
 	<comment></comment>
 	<projects>
-		<project>castalia-apple-dao</project>
 		<project>castalia-apple-service</project>
+		<project>castalia-apple-model</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

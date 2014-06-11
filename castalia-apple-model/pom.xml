@@ -6,8 +6,8 @@
 		<artifactId>castalia</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>castalia-apple-dao</artifactId>
-	<name>castalia-apple-dao</name>
+	<artifactId>castalia-apple-model</artifactId>
+	<name>castalia-apple-model</name>
 
 	<dependencies>
 		<dependency>

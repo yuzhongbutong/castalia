@@ -12,7 +12,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.castalia</groupId>
-			<artifactId>castalia-apple-dao</artifactId>
+			<artifactId>castalia-apple-model</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

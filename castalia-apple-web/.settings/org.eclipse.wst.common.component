@@ -6,10 +6,10 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/castalia-apple-dao/castalia-apple-dao">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/castalia-apple-service/castalia-apple-service">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/castalia-apple-service/castalia-apple-service">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/castalia-apple-model/castalia-apple-model">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/castalia-apple-web/target/classes"/>

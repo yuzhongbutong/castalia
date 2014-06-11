@@ -46,7 +46,7 @@
 		</property>
 		<property name="packagesToScan">
 			<list>
-				<value>com.castalia.major.dao.entry</value>
+				<value>com.castalia.apple.model</value>
 			</list>
 		</property>
 	</bean>

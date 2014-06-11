@@ -4,8 +4,6 @@ import java.util.Date;
 
 public class BaseEntry {
 
-	public long id;
-
 	public Date createDate;
 
 	public String createUser;
@@ -15,14 +13,6 @@ public class BaseEntry {
 	public String updateUser;
 
 	public short deleteFlag;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public Date getCreateDate() {
 		return createDate;

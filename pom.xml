@@ -9,7 +9,7 @@
 	<modules>
 		<module>castalia-apple-web</module>
 		<module>castalia-apple-service</module>
-		<module>castalia-apple-dao</module>
+		<module>castalia-apple-model</module>
 		<module>castalia-core</module>
 	</modules>
 
@@ -58,4 +58,8 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 </project>
