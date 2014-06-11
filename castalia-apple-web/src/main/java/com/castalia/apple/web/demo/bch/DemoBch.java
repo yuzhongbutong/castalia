@@ -16,9 +16,21 @@ public class DemoBch extends BaseBch {
 	@Qualifier("demoBsh")
 	private IDemoBsh demoBsh;
 	
-	@RequestMapping(value = "/user")
-	public String getDemo() {
+	@RequestMapping(value = "/jsp")
+	public String getDemoJSP() {
 		System.out.println(demoBsh.getDemo()+"11111111111111111111");
-		return "";
+		return "DemoJSP";
+	}
+	
+	@RequestMapping(value = "/vm")
+	public String getDemoVM() {
+		System.out.println(demoBsh.getDemo()+"11111111111111111111");
+		return "DemoVM";
+	}
+	
+	@RequestMapping(value = "/ftl")
+	public String getDemoFTL() {
+		System.out.println(demoBsh.getDemo()+"11111111111111111111");
+		return "DemoFTL";
 	}
 }
