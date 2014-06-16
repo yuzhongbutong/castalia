@@ -1,9 +1,6 @@
 package com.castalia.apple.model.demo.entry;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -18,8 +15,6 @@ public class DemoEO extends BaseEntry {
 	private String password;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID", unique=true, nullable=false, insertable=true, updatable=false, precision=20, scale=0)
 	public long getId() {
 		return id;
 	}

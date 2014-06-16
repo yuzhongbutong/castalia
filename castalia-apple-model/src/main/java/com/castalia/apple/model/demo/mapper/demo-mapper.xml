@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+    <!DOCTYPE mapper 
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.castalia.apple.model.demo.mapper.IDemoMapper">
+		<insert id="insertDemoEO" parameterType="com.castalia.apple.model.demo.entry.DemoEO">
+			insert into tbl_demo (id, userName, password, updateUser) values (#{id}, #{userName}, #{password}, #{updateUser})
+		</insert>
+		
+		<resultMap type="com.castalia.apple.model.demo.entry.DemoEO" id="DemoMap">
+			<id column="id" property="id"/>
+			<result column="userName" property="userName"/>
+			<result column="password" property="password"/>
+			<result column="updateUser" property="updateUser"/>
+		</resultMap>
+		
+		<select id="getDemoEO" resultMap="DemoMap">
+			select * from tbl_demo
+		</select>
+	</mapper>

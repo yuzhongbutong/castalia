@@ -12,10 +12,9 @@
          http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
     <import resource="classpath:applicationContext_apple-model.xml" />
 	<context:component-scan base-package="com.castalia.apple.service" />
-    
 	<aop:config>
 		<aop:pointcut id="allMethods"
-			expression="execution(* com.castalia.apple.service.bsh.*.*(..))" />
+			expression="execution(* com.castalia.apple.service..*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="allMethods" />
 	</aop:config>
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
@@ -23,8 +22,13 @@
 			<tx:method name="*" propagation="REQUIRED" read-only="true" />
 			<tx:method name="add*" propagation="REQUIRED" />
 			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
 			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="alter*" propagation="REQUIRED" />
+			<tx:method name="modify*" propagation="REQUIRED" />
 			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="clear*" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
 </beans>
