@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	<mapper namespace="com.castalia.apple.model.demo.mapper.IDemoMapper">
 		<insert id="insertDemoEO" parameterType="com.castalia.apple.model.demo.entry.DemoEO">
+			<selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE">
+				select seq_id.nextval as id from dual
+			</selectKey>
 			insert into tbl_demo (id, userName, password, updateUser) values (#{id}, #{userName}, #{password}, #{updateUser})
 		</insert>
 		

@@ -2,6 +2,9 @@ package com.castalia.core.base.entry;
 
 import java.util.Date;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class BaseEntry {
 
 	public Date createDate;

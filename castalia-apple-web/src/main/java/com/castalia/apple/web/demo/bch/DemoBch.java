@@ -17,35 +17,35 @@ public class DemoBch extends BaseBch {
 	@Qualifier("demoBsh")
 	private IDemoBsh demoBsh;
 	
-	@RequestMapping(value = "/jsp/save")
-	public String saveDemoJSP() {
-		demoBsh.saveDemoJSP(new DemoEO());
-		return "DemoJSP";
-	}
-	
-	@RequestMapping(value = "/jsp/find")
-	public String findDemoJSP() {
-		System.out.println("////////////////");
-		logger.error("ddddddddddddddddebug");
-		demoBsh.findDemoJSP();
-		return "DemoJSP";
-	}
-	
 	@RequestMapping(value = "/vm/insert")
 	public String insertDemoVM() {
 		DemoEO demoEO = new DemoEO();
-		demoEO.setId(10);
 		demoEO.setUserName("Jerry Joe");
 		demoEO.setPassword("");
 		demoEO.setUpdateUser("updateUser");
 		demoBsh.InsertDemoVM(demoEO);
-		return "DemoVM";
+		return "demo/DemoSaveVM";
 	}
 	
 	@RequestMapping(value = "/vm/get")
 	public String getDemoVM() {
 		demoBsh.getDemoVM();
-		return "DemoVM";
+		return "demo/DemoSaveVM";
+	}
+	
+	@RequestMapping(value = "/jsp/save")
+	public String saveDemoJSP() {
+		DemoEO d = new DemoEO();
+		d.setUserName("aa");
+		d.setUpdateUser("UU");
+		demoBsh.saveDemoJSP(d);
+		return "DemoJSP";
+	}
+	
+	@RequestMapping(value = "/jsp/find")
+	public String findDemoJSP() {
+		demoBsh.findDemoJSP();
+		return "demo/DemoSaveJSP";
 	}
 	
 	@RequestMapping(value = "/ftl")

@@ -1,13 +1,17 @@
 package com.castalia.apple.model.demo.entry;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.castalia.core.base.entry.BaseEntry;
 
 @Entity
 @Table(name = "tbl_demo")
+@SequenceGenerator(name = "seq_name", sequenceName = "seq_id", allocationSize = 1, initialValue = 1)
 public class DemoEO extends BaseEntry {
 	
 	private long id;
@@ -15,6 +19,7 @@ public class DemoEO extends BaseEntry {
 	private String password;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_name")
 	public long getId() {
 		return id;
 	}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<link href="../../css/common/exterior/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+<script src="../../js/common/exterior/jquery-1.10.2.js"></script>
+<script src="../../js/common/exterior/jquery-ui-1.10.4.custom.js"></script>
+<script type="text/javascript" src="../../js/common/common.js"></script>
+<script>
+	$(function() {
+
+		$("#accordion").accordion();
+
+		$("#velocitySave").button();
+		$("#velocitySearch").button();
+		$("#freeMarkerSave").button();
+		$("#freeMarkerSearch").button();
+		$("#jspSave").button();
+		$("#jspSearch").button();
+
+		$("#velocitySave").click(function() {
+			$("#formID").attr("action", root + "/demo/vm/insert");
+			$("#formID").submit();
+		});
+		$("#velocitySearch").click(function() {
+			
+		});
+		$("#freeMarkerSave").click(function() {
+			
+		});
+		$("#freeMarkerSearch").click(function() {
+			
+		});
+		$("#jspSave").click(function() {
+			
+		});
+		$("#jspSearch").click(function() {
+			
+		});
+	});
+</script>
+</head>
+<body>
+<form id="formID" method="post">
+	<h2 class="demoHeaders">Demo</h2>
+	<div id="accordion">
+		<h3>Velocity</h3>
+		<div>
+			<button id="velocitySave">Velocity Save</button>
+			<button id="velocitySearch">Velocity Search</button>
+		</div>
+		<h3>FreeMarker</h3>
+		<div>
+			<button id="freeMarkerSave">FreeMarker Save</button>
+			<button id="freeMarkerSearch">FreeMarker Search</button>
+		</div>
+		<h3>JSP</h3>
+		<div>
+			<button id="jspSave">JSP Save</button>
+			<button id="jspSearch">JSP Search</button>
+		</div>
+	</div>
+</form>
+</body>
+</html>
