@@ -6,8 +6,8 @@ import com.castalia.apple.model.demo.entry.DemoEO;
 
 public interface IDemoBlh {
 
-	public abstract boolean saveDemoJSP(DemoEO demoEO);
+	public abstract boolean saveDemoByFM(DemoEO demoEO);
 
-	public abstract List<DemoEO> findDemoJSP();
+	public abstract List<DemoEO> searchDemoByFM(String userName);
 
 }

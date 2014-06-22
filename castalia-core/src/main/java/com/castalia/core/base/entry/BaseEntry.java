@@ -7,22 +7,29 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class BaseEntry {
 
-	public Date createDate;
+	private Date createDate;
 
-	public String createUser;
+	private String createUser;
 
-	public Date updateDate;
+	private Date updateDate;
 
-	public String updateUser;
+	private String updateUser;
 
-	public short deleteFlag;
+	private short deleteFlag;
 
 	public Date getCreateDate() {
+		if (createDate == null) {
+			createDate = new Date();
+		}
 		return createDate;
 	}
 
 	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+		if (createDate == null) {
+			this.createDate = new Date();
+		} else {
+			this.createDate = createDate;
+		}
 	}
 
 	public String getCreateUser() {
@@ -34,11 +41,12 @@ public class BaseEntry {
 	}
 
 	public Date getUpdateDate() {
+		updateDate = new Date();
 		return updateDate;
 	}
 
 	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
+		this.updateDate = new Date();
 	}
 
 	public String getUpdateUser() {

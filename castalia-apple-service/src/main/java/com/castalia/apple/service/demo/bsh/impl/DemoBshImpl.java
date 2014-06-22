@@ -24,22 +24,22 @@ public class DemoBshImpl extends BaseBsh implements IDemoBsh {
 	private IDemoDao demoDao;
 
 	@Override
-	public boolean saveDemoJSP(DemoEO demoEO) {
-		return demoBlh.saveDemoJSP(demoEO);
+	public boolean saveDemoByVelo(DemoEO demoEO) {
+		return demoDao.saveDemoByVelo(demoEO);
 	}
 
 	@Override
-	public List<DemoEO> findDemoJSP() {
-		return demoBlh.findDemoJSP();
+	public List<DemoEO> searchDemoByVelo(String userName) {
+		return demoDao.searchDemoByVelo(userName);
 	}
 
 	@Override
-	public boolean InsertDemoVM(DemoEO demoEO) {
-		return demoDao.insertDemoEO(demoEO);
+	public boolean saveDemoByFM(DemoEO demoEO) {
+		return demoBlh.saveDemoByFM(demoEO);
 	}
 
 	@Override
-	public List<DemoEO> getDemoVM() {
-		return demoDao.getDemoEO();
+	public List<DemoEO> searchDemoByFM(String userName) {
+		return demoBlh.searchDemoByFM(userName);
 	}
 }

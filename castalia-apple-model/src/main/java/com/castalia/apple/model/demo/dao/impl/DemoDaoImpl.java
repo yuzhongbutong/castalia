@@ -21,7 +21,7 @@ public class DemoDaoImpl extends BaseDao implements IDemoDao {
 	private IDemoMapper demoMapper;
 	
 	@Override
-	public boolean saveDemoEO(DemoEO demoEO) {
+	public boolean saveDemoByVelo(DemoEO demoEO) {
 		boolean flag = true;
 		try {
 			hibernateTemplate.save(demoEO);
@@ -34,14 +34,20 @@ public class DemoDaoImpl extends BaseDao implements IDemoDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<DemoEO> findDemoEO() {
+	public List<DemoEO> searchDemoByVelo(String userName) {
 		List<DemoEO> demoEOList = new ArrayList<DemoEO>();
-		demoEOList = (List<DemoEO>) hibernateTemplate.find("from com.castalia.apple.model.demo.entry.DemoEO");
+		List<String> condition = new ArrayList<String>();
+		StringBuffer hql = new StringBuffer("from com.castalia.apple.model.demo.entry.DemoEO where 1 = 1");
+		if (userName != null && !"".equals(userName)) {
+			hql.append(" and userName = ?");
+			condition.add(userName);
+		}
+		demoEOList = (List<DemoEO>) hibernateTemplate.find(hql.toString(), condition.toArray());
 		return demoEOList;
 	}
 	
 	@Override
-	public boolean insertDemoEO(DemoEO demoEO) {
+	public boolean saveDemoByFM(DemoEO demoEO) {
 		boolean flag = true;
 		try {
 			demoMapper.insertDemoEO(demoEO);
@@ -53,9 +59,9 @@ public class DemoDaoImpl extends BaseDao implements IDemoDao {
 	}
 	
 	@Override
-	public List<DemoEO> getDemoEO() {
+	public List<DemoEO> searchDemoByFM(String userName) {
 		List<DemoEO> demoEOList = new ArrayList<DemoEO>();
-		demoEOList = demoMapper.getDemoEO();
+		demoEOList = demoMapper.getDemoEO(userName);
 		return demoEOList;
 	}
 }

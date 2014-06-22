@@ -2,7 +2,7 @@
 drop table tbl_demo;
 
 create table tbl_demo(
-  id number(9) primary key,
+  id number(9) primary key not null,
 
   userName varchar2(10),
   password varchar2(10),
@@ -11,7 +11,7 @@ create table tbl_demo(
   createUser varchar2(10),
   updateDate date,
   updateUser varchar2(10),
-  deleteFlag char(1)
+  deleteFlag char(1) default 0
 );
 
 insert into tbl_demo (ID, USERNAME, PASSWORD, CREATEDATE, CREATEUSER, UPDATEDATE, UPDATEUSER, DELETEFLAG)

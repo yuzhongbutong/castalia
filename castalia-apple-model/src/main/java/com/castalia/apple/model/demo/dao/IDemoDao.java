@@ -6,12 +6,12 @@ import com.castalia.apple.model.demo.entry.DemoEO;
 
 public interface IDemoDao {
 
-	public abstract boolean saveDemoEO(DemoEO demoEO);
+	public abstract boolean saveDemoByVelo(DemoEO demoEO);
 
-	public abstract List<DemoEO> findDemoEO();
+	public abstract List<DemoEO> searchDemoByVelo(String userName);
 
-	public abstract boolean insertDemoEO(DemoEO demoEO);
+	public abstract boolean saveDemoByFM(DemoEO demoEO);
 
-	public abstract List<DemoEO> getDemoEO();
+	public abstract List<DemoEO> searchDemoByFM(String userName);
 
 }

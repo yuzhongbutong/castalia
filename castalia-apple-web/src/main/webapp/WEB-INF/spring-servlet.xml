@@ -29,7 +29,7 @@
 		<property name="favorParameter" value="false" />
 		<property name="mediaTypes">
 			<map>
-				<entry key="html" value="text/html" />
+				<!-- <entry key="html" value="text/html" /> -->
 				<entry key="json" value="application/json" />
 				<entry key="xml" value="application/xml" />
 			</map>
@@ -94,4 +94,8 @@
 		</property>
 	</bean>
 	<bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" />
+
+	<mvc:interceptors>
+		<bean class="com.castalia.apple.web.interceptor.CommonInterceptor" />
+	</mvc:interceptors>
 </beans>
