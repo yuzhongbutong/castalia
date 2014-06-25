@@ -34,6 +34,14 @@ public class DemoDaoImpl extends BaseDao implements IDemoDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
+	public List<String> searchUserNameByVelo() {
+		StringBuffer hql = new StringBuffer("select distinct userName from com.castalia.apple.model.demo.entry.DemoEO");
+		List<String> nameList = (List<String>) hibernateTemplate.find(hql.toString());
+		return nameList;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
 	public List<DemoEO> searchDemoByVelo(String userName) {
 		List<DemoEO> demoEOList = new ArrayList<DemoEO>();
 		List<String> condition = new ArrayList<String>();
@@ -47,7 +55,7 @@ public class DemoDaoImpl extends BaseDao implements IDemoDao {
 	}
 	
 	@Override
-	public boolean saveDemoByFM(DemoEO demoEO) {
+	public boolean saveDemoByFree(DemoEO demoEO) {
 		boolean flag = true;
 		try {
 			demoMapper.insertDemoEO(demoEO);
@@ -59,7 +67,7 @@ public class DemoDaoImpl extends BaseDao implements IDemoDao {
 	}
 	
 	@Override
-	public List<DemoEO> searchDemoByFM(String userName) {
+	public List<DemoEO> searchDemoByFree(String userName) {
 		List<DemoEO> demoEOList = new ArrayList<DemoEO>();
 		demoEOList = demoMapper.getDemoEO(userName);
 		return demoEOList;

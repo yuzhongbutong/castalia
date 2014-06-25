@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Demo -- Velocity > Mybatis Search</title>
+<title>Demo -- Velocity > Hibernate Search</title>
 <link href="$ctx/css/common/exterior/jquery-ui-1.10.4.custom.css" rel="stylesheet">
 <script src="$ctx/js/common/exterior/jquery-1.10.2.js"></script>
 <script src="$ctx/js/common/exterior/jquery-ui-1.10.4.custom.js"></script>
@@ -16,11 +16,17 @@ body {
 </style>
 <script type="text/javascript">
 	$(function() {
-		var availableTags = [ "张三", "李四", "王五", "赵六", "张七", "李八" ];
-		$("#name_cdtID").autocomplete({
-			source : availableTags
+		$.ajax({
+			type : "post",
+			url : "$ctx/demo/vm/get/user",
+			error : function(error){},
+			success : function(list) {
+				$("#name_cdtID").autocomplete({
+					source : list
+				});
+			}
 		});
-
+		
 		$("#velocitySearch").button();
 
 		$("#velocitySearch").click(function() {
@@ -31,7 +37,6 @@ body {
 </head>
 <body>
 	<form id="demoFormID" name="demoForm" action="$ctx/demo/vm/operate/search" method="post">
-	<input name="sessionID" type="hidden" value="${sessionID}">
 		<fieldset>
 			<legend>查询条件</legend>
 		<table style="width: 50%;">

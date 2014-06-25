@@ -8,10 +8,12 @@ public interface IDemoDao {
 
 	public abstract boolean saveDemoByVelo(DemoEO demoEO);
 
+	public abstract List<String> searchUserNameByVelo();
+
 	public abstract List<DemoEO> searchDemoByVelo(String userName);
 
-	public abstract boolean saveDemoByFM(DemoEO demoEO);
+	public abstract boolean saveDemoByFree(DemoEO demoEO);
 
-	public abstract List<DemoEO> searchDemoByFM(String userName);
+	public abstract List<DemoEO> searchDemoByFree(String userName);
 
 }

@@ -29,17 +29,23 @@ public class DemoBshImpl extends BaseBsh implements IDemoBsh {
 	}
 
 	@Override
+	public List<String> searchUserNameByVelo() {
+		// TODO Auto-generated method stub
+		return demoDao.searchUserNameByVelo();
+	}
+
+	@Override
 	public List<DemoEO> searchDemoByVelo(String userName) {
 		return demoDao.searchDemoByVelo(userName);
 	}
 
 	@Override
-	public boolean saveDemoByFM(DemoEO demoEO) {
-		return demoBlh.saveDemoByFM(demoEO);
+	public boolean saveDemoByFree(DemoEO demoEO) {
+		return demoBlh.saveDemoByFree(demoEO);
 	}
 
 	@Override
-	public List<DemoEO> searchDemoByFM(String userName) {
-		return demoBlh.searchDemoByFM(userName);
+	public List<DemoEO> searchDemoByFree(String userName) {
+		return demoBlh.searchDemoByFree(userName);
 	}
 }

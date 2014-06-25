@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.castalia.apple.model.demo.entry.DemoEO;
 import com.castalia.apple.service.demo.bsh.IDemoBsh;
@@ -33,9 +33,14 @@ public class DemoBch extends BaseBch {
 
 	@RequestMapping(value = "/vm/init/search")
 	public String initSearchByVelo(Model model, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		model.addAttribute("sessionID", session.getId());
 		return "demo/DemoSearchVM";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/vm/get/user")
+	public List<String> getUserNameByAjax(Model model, HttpServletRequest request) {
+		List<String> userNameList = demoBsh.searchUserNameByVelo();
+		return userNameList;
 	}
 	
 	@RequestMapping(value = "/vm/operate/save")
@@ -53,16 +58,14 @@ public class DemoBch extends BaseBch {
 		return "demo/DemoSearchVM";
 	}
 	
-	@RequestMapping(value = "/jsp/save")
-	public String saveDemoJSP() {
-		DemoEO d = new DemoEO();
-		d.setUserName("aa");
-		d.setUpdateUser("UU");
-		return "DemoJSP";
+	@RequestMapping(value = "/ftl/init/save")
+	public String initSaveByFree(Model model) {
+		model.addAttribute("flag", null);
+		return "demo/DemoSaveFTL";
 	}
 	
-	@RequestMapping(value = "/jsp/find")
-	public String findDemoJSP() {
+	@RequestMapping(value = "/ftl/init/search")
+	public String initSearchByFree() {
 		return "demo/DemoSaveJSP";
 	}
 	

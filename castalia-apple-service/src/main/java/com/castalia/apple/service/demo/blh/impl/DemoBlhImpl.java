@@ -19,12 +19,12 @@ public class DemoBlhImpl extends BaseBlh implements IDemoBlh {
 	private IDemoDao demoDao;
 
 	@Override
-	public boolean saveDemoByFM(DemoEO demoEO) {
-		return demoDao.saveDemoByFM(demoEO);
+	public boolean saveDemoByFree(DemoEO demoEO) {
+		return demoDao.saveDemoByFree(demoEO);
 	}
 	
 	@Override
-	public List<DemoEO> searchDemoByFM(String userName) {
-		return demoDao.searchDemoByFM(userName);
+	public List<DemoEO> searchDemoByFree(String userName) {
+		return demoDao.searchDemoByFree(userName);
 	}
 }

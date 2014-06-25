@@ -45,18 +45,19 @@
 			<list>
 				<bean
 					class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
-					<property name="cache" value="false" />
-					<property name="suffix" value=".vm" />
 					<property name="contentType" value="text/html;charset=UTF-8"></property>
 					<property name="exposeSpringMacroHelpers" value="true" />
 					<property name="requestContextAttribute" value="rc" />
+					<property name="cache" value="false" />
+					<property name="suffix" value=".vm" />
 				</bean>
 				<bean
 					class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 					<property name="viewClass"
 						value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
 					<property name="contentType" value="text/html; charset=utf-8" />
-					<property name="cache" value="true" />
+					<property name="requestContextAttribute" value="rc" />
+					<property name="cache" value="false" />
 					<property name="suffix" value=".ftl" />
 				</bean>
 				<bean
@@ -71,29 +72,29 @@
 	</bean>
 
 	<!-- 配置velocity的模板路径 -->
-	<bean id="velocityConfig"
+	<bean id="velocityConfigurer"
 		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-		<property name="configLocation" value="/WEB-INF/velocity.properties" />
 		<property name="resourceLoaderPath" value="/WEB-INF/vm/" />
-	</bean>
-
-	<!-- 配置freeMarker的模板路径 -->
-	<bean id="freemarkerConfig"
-		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-		<property name="templateLoaderPath" value="/WEB-INF/ftl/" />
-		<property name="defaultEncoding" value="utf-8" />
-		<property name="freemarkerVariables">
-			<map>
-				<entry key="xml_escape" value-ref="fmXmlEscape" />
-			</map>
-		</property>
-		<property name="freemarkerSettings">
+		<property name="velocityProperties">
 			<props>
-				<prop key="template_update_delay">3600</prop>
+				<prop key="input.encoding">UTF-8</prop>
+				<prop key="output.encoding">UTF-8</prop>
+				<prop key="directive.foreach.counter.name">velocityCount</prop>
 			</props>
 		</property>
 	</bean>
-	<bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" />
+
+	<!-- 配置freeMarker的模板路径 -->
+	<bean id="freemarkerConfigurer"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/WEB-INF/ftl/" />
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="template_update_delay">0</prop>
+			</props>
+		</property>
+	</bean>
 
 	<mvc:interceptors>
 		<bean class="com.castalia.apple.web.interceptor.CommonInterceptor" />
