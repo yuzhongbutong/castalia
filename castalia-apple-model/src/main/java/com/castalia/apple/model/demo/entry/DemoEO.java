@@ -11,7 +11,7 @@ import com.castalia.core.base.entry.BaseEntry;
 
 @Entity
 @Table(name = "tbl_demo")
-@SequenceGenerator(name = "seq_name", sequenceName = "seq_id", allocationSize = 1, initialValue = 1)
+@SequenceGenerator(name = "seq_name", sequenceName = "seq_demo_id", allocationSize = 1, initialValue = 1)
 public class DemoEO extends BaseEntry {
 	
 	private long id;

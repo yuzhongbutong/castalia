@@ -1,4 +1,4 @@
-<#assign ctx=rc.contextPath>
+<#assign ctx = rc.contextPath>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,18 +40,18 @@ body {
 				}
 			]
 		});
-		#if($flag)
+		<#if flag?? && flag>
 			$( "#successDialogID" ).dialog( "open" );
-		#end
+		</#if>
 	});
 </script>
 </head>
 <body>
-	<form id="demoFormID" name="demoForm" action="${ctx}/demo/vm/operate/save" method="post">${flag}
+	<form id="demoFormID" name="demoForm" action="${ctx}/demo/ftl/operate/save" method="post">
 		<table style="width: 50%;">
 			<tr align="center">
 				<td width="40%" style="border-style: double;"><input
-					id="nameID" name="userName" style="width: 98%" value="aaa"></td>
+					id="nameID" name="userName" style="width: 98%" value="王五"></td>
 				<td width="40%" style="border-style: double;"><input
 					name="password" type="password" style="width: 98%" value="bb"></td>
 				<td width="20%" style="border-style: double;"><button

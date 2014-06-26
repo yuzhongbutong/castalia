@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
-<!--     <!DOCTYPE mapper  -->
-<!--         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  -->
-<!--         "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> -->
 <!DOCTYPE mapper       
-PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"       
-"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd"> 
+	PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"       
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd"> 
 	<mapper namespace="com.castalia.apple.model.demo.mapper.IDemoMapper">
 		<insert id="insertDemoEO" parameterType="com.castalia.apple.model.demo.entry.DemoEO">
 			<selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE">
-				select seq_id.nextval as id from dual
+				select seq_demo_id.nextval as id from dual
 			</selectKey>
 			insert into tbl_demo (id, userName, password, createDate, updateDate) values (#{id}, #{userName}, #{password}, #{createDate}, #{updateDate})
 		</insert>

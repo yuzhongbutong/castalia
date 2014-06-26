@@ -28,12 +28,12 @@ public class DemoBch extends BaseBch {
 
 	@RequestMapping(value = "/vm/init/save")
 	public String initSaveByVelo() {
-		return "demo/DemoSaveVM";
+		return "demo/DemoSaveVelo";
 	}
 
 	@RequestMapping(value = "/vm/init/search")
 	public String initSearchByVelo(Model model, HttpServletRequest request) {
-		return "demo/DemoSearchVM";
+		return "demo/DemoSearchVelo";
 	}
 
 	@ResponseBody
@@ -47,7 +47,7 @@ public class DemoBch extends BaseBch {
 	public String saveDemoByVelo(Model model, @ModelAttribute("demoForm") DemoEO demoEO) {
 		boolean flag = demoBsh.saveDemoByVelo(demoEO);
 		model.addAttribute("flag", flag);
-		return "demo/DemoSaveVM";
+		return "demo/DemoSaveVelo";
 	}
 	
 	@RequestMapping(value = "/vm/operate/search")
@@ -55,25 +55,31 @@ public class DemoBch extends BaseBch {
 		List<DemoEO> demoEOList = demoBsh.searchDemoByVelo((String) parameters.get("userName_cdt"));
 		model.addAttribute("userName", parameters.get("userName_cdt"));
 		model.addAttribute("demoEOList", demoEOList);
-		return "demo/DemoSearchVM";
+		return "demo/DemoSearchVelo";
 	}
 	
 	@RequestMapping(value = "/ftl/init/save")
-	public String initSaveByFree(Model model) {
-		model.addAttribute("flag", null);
-		return "demo/DemoSaveFTL";
+	public String initSaveByFree() {
+		return "demo/DemoSaveFree";
 	}
 	
 	@RequestMapping(value = "/ftl/init/search")
 	public String initSearchByFree() {
-		return "demo/DemoSaveJSP";
+		return "demo/DemoSearchFree";
 	}
 	
-	@RequestMapping(value = "/ftl")
-	public String getDemoFTL() {
-		//Ajax
-		//Ajax
-		//Ajax
-		return "DemoFTL";
+	@RequestMapping(value = "/ftl/operate/save")
+	public String saveDemoByFree(Model model, @ModelAttribute("demoForm") DemoEO demoEO) {
+		boolean flag = demoBsh.saveDemoByFree(demoEO);
+		model.addAttribute("flag", flag);
+		return "demo/DemoSaveFree";
+	}
+	
+	@RequestMapping(value = "/ftl/operate/search")
+	public String searchDemoByFree(Model model, @RequestParam Map<String, Object> parameters) {
+		List<DemoEO> demoEOList = demoBsh.searchDemoByFree((String) parameters.get("userName_cdt"));
+		model.addAttribute("userName", parameters.get("userName_cdt"));
+		model.addAttribute("demoEOList", demoEOList);
+		return "demo/DemoSearchVelo";
 	}
 }
