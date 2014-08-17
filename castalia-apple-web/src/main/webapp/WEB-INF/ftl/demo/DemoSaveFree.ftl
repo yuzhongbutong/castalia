@@ -24,7 +24,7 @@ body {
 		$("#velocitySubmit").button();
 
 		$("#velocitySubmit").click(function() {
-			$("#demoFormID").submit();
+			$("#demoFormID").submit(function(e) {});
 		});
 		
 		$( "#successDialogID" ).dialog({

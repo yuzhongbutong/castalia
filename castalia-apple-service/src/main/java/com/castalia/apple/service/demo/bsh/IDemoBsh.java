@@ -7,6 +7,8 @@ import com.castalia.apple.model.demo.entry.DemoEO;
 public interface IDemoBsh {
 
 	public abstract boolean saveDemoByVelo(DemoEO demoEO);
+
+	public abstract boolean updateDemoByVelo(DemoEO demoEO);
 	
 	public abstract List<String> searchUserNameByVelo();
 

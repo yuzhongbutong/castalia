@@ -4,14 +4,14 @@
 	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd"> 
 	<mapper namespace="com.castalia.apple.model.demo.mapper.IDemoMapper">
 		<insert id="insertDemoEO" parameterType="com.castalia.apple.model.demo.entry.DemoEO">
-			<selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE">
-				select seq_demo_id.nextval as id from dual
+			<selectKey resultType="java.lang.Long" keyProperty="demoId" order="BEFORE">
+				select seq_demo_id.nextval as demoId from dual
 			</selectKey>
-			insert into tbl_demo (id, userName, password, createDate, updateDate) values (#{id}, #{userName}, #{password}, #{createDate}, #{updateDate})
+			insert into tbl_demo (demoId, userName, password, createDate, updateDate) values (#{demoId}, #{userName}, #{password}, #{createDate}, #{updateDate})
 		</insert>
 		
 		<resultMap type="com.castalia.apple.model.demo.entry.DemoEO" id="DemoMap">
-			<id column="id" property="id"/>
+			<id column="demoId" property="demoId"/>
 			<result column="userName" property="userName"/>
 			<result column="password" property="password"/>
 			<result column="createDate" property="createDate"/>

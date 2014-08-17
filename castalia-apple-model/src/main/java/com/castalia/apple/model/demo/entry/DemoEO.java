@@ -14,17 +14,17 @@ import com.castalia.core.base.entry.BaseEntry;
 @SequenceGenerator(name = "seq_name", sequenceName = "seq_demo_id", allocationSize = 1, initialValue = 1)
 public class DemoEO extends BaseEntry {
 	
-	private long id;
+	private long demoId;
 	private String userName;
 	private String password;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_name")
-	public long getId() {
-		return id;
+	public long getDemoId() {
+		return demoId;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setDemoId(long demoId) {
+		this.demoId = demoId;
 	}
 	public String getUserName() {
 		return userName;

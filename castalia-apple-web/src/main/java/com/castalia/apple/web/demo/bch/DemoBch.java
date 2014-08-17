@@ -35,19 +35,27 @@ public class DemoBch extends BaseBch {
 	public String initSearchByVelo(Model model, HttpServletRequest request) {
 		return "demo/DemoSearchVelo";
 	}
-
-	@ResponseBody
-	@RequestMapping(value = "/vm/get/user")
-	public List<String> getUserNameByAjax(Model model, HttpServletRequest request) {
-		List<String> userNameList = demoBsh.searchUserNameByVelo();
-		return userNameList;
-	}
 	
 	@RequestMapping(value = "/vm/operate/save")
 	public String saveDemoByVelo(Model model, @ModelAttribute("demoForm") DemoEO demoEO) {
 		boolean flag = demoBsh.saveDemoByVelo(demoEO);
 		model.addAttribute("flag", flag);
 		return "demo/DemoSaveVelo";
+	}
+	
+	@RequestMapping(value = "/vm/operate/update")
+	public String updateDemoByVelo(Model model, @ModelAttribute("demoForm") List<DemoEO> demoEO) {
+		System.out.println("2222222222222");
+//		boolean flag = demoBsh.saveDemoByVelo(demoEO);
+//		model.addAttribute("flag", flag);
+		return "demo/DemoSearchVelo";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/vm/get/user")
+	public List<String> getUserNameByAjax(Model model, HttpServletRequest request) {
+		List<String> userNameList = demoBsh.searchUserNameByVelo();
+		return userNameList;
 	}
 	
 	@RequestMapping(value = "/vm/operate/search")

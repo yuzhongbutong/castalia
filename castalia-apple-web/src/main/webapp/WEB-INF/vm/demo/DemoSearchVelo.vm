@@ -4,14 +4,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Demo -- Velocity > Hibernate Search</title>
-<link href="$ctx/css/common/exterior/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+<link href="$ctx/css/common/exterior/jquery-ui-1.10.4.custom.css"
+	rel="stylesheet">
 <script src="$ctx/js/common/exterior/jquery-1.10.2.js"></script>
 <script src="$ctx/js/common/exterior/jquery-ui-1.10.4.custom.js"></script>
+<script src="$ctx/js/common/exterior/jquery.jqGrid.min.js"></script>
 <script type="text/javascript" src="$ctx/js/common/common.js"></script>
 <style type="text/css">
 body {
 	font: 62.5% "Trebuchet MS", sans-serif;
 	margin: 50px;
+}
+
+.input_text {
+	width: 100%;
+	/* 	border: none; */
+}
+
+#demo_tblID td {
+	border-style: double;
+	padding-right: 7px;
+}
+
+.udp_input_text {
+	border-color: red;
 }
 </style>
 <script type="text/javascript">
@@ -19,59 +35,100 @@ body {
 		$.ajax({
 			type : "post",
 			url : "$ctx/demo/vm/get/user",
-			error : function(error){},
+			error : function(error) {
+			},
 			success : function(list) {
 				$("#name_cdtID").autocomplete({
 					source : list
 				});
 			}
 		});
-		
-		$("#velocitySearch").button();
+
+		$("button").button();
 
 		$("#velocitySearch").click(function() {
 			$("#demoFormID").submit();
 		});
+
+		$("#velocityUpdate").click(function() {
+			$("#demoFormID").attr("action", "$ctx/demo/vm/operate/update");
+			$("#demoFormID").submit();
+		});
+
+		$("#velocityDelete").click(function() {
+			$("#demoFormID").attr("action", "$ctx/demo/vm/operate/delete");
+			$("#demoFormID").submit();
+		});
+
+		$("#demo_tblID input[type='checkbox']").click(
+				function() {
+					var tr = $(this).parent().parent();
+					if ($(this).prop("checked")) {
+						$(this).next().val($(this).val());
+						tr.children(":eq(1)").find("input").addClass("udp_input_text");
+						tr.children(":eq(1)").find("input").attr("readonly", false);
+						tr.children(":eq(1)").find("input").select();
+						tr.children(":eq(2)").find("input").addClass("udp_input_text");
+						tr.children(":eq(2)").find("input").attr("readonly", false);
+					} else {
+						$(this).next().val("");
+						tr.children(":eq(1)").find("input").removeClass("udp_input_text");
+						tr.children(":eq(1)").find("input").attr("readonly", "readonly");
+						tr.children(":eq(2)").find("input").removeClass("udp_input_text");
+						tr.children(":eq(2)").find("input").attr("readonly", true);
+					}
+				});
 	});
 </script>
 </head>
 <body>
-	<form id="demoFormID" name="demoForm" action="$ctx/demo/vm/operate/search" method="post">
+	<form id="demoFormID" name="demoForm"
+		action="$ctx/demo/vm/operate/search" method="post">
 		<fieldset>
 			<legend>查询条件</legend>
-		<table style="width: 50%;">
-			<tr align="center">
-				<td width="40%"><input
-					id="name_cdtID" name="userName_cdt" value="$!userName" style="width: 98%"></td>
-				<td width="60%"><button
-						id="velocitySearch">Search</button></td>
-			</tr>
-		</table>
+			<table style="width: 50%;">
+				<tr align="center">
+					<td width="40%"><input id="name_cdtID" name="userName_cdt"
+						value="$!userName"></td>
+					<td width="60%"><button id="velocitySearch">Search</button></td>
+				</tr>
+			</table>
 		</fieldset>
 		<fieldset>
 			<legend>查询结果</legend>
-		<table style="width: 100%;">
-			<tr align="center" style="background-color: #cccccc">
-				<td width="10%" style="border-style: double;">ID</td>
-				<td width="13%" style="border-style: double;">用户名</td>
-				<td width="13%" style="border-style: double;">密码</td>
-				<td width="16%" style="border-style: double;">创建时间</td>
-				<td width="16%" style="border-style: double;">创建用户</td>
-				<td width="16%" style="border-style: double;">更新时间</td>
-				<td width="16%" style="border-style: double;">更新用户</td>
-			</tr>
-			#foreach($demo in ${demoEOList})
-			<tr align="center">
-				<td style="border-style: double;">$!demo.id</td>
-				<td style="border-style: double;">$!demo.userName</td>
-				<td style="border-style: double;">$!demo.password</td>
-				<td style="border-style: double;">$!demo.createDate</td>
-				<td style="border-style: double;">$!demo.createUser</td>
-				<td style="border-style: double;">$!demo.updateDate</td>
-				<td style="border-style: double;">$!demo.updateUser</td>
-			</tr>
-			#end
-		</table>
+			<table id="demo_tblID" style="width: 100%;">
+				<tr style="background-color: #cccccc">
+					<th colspan="7" valign="bottom"
+						style="border-style: double; text-align: left;">用户信息
+						<div style="width: 50%; float: right; text-align: right;">
+							<button id="velocityUpdate">Update</button>
+							<button id="velocityDelete">Delete</button>
+						</div>
+					</th>
+				</tr>
+				<tr align="center" style="background-color: #cccccc">
+					<th width="10%" style="border-style: double;">选项</th>
+					<th width="13%" style="border-style: double;">用户名</th>
+					<th width="13%" style="border-style: double;">密码</th>
+					<th width="16%" style="border-style: double;">创建时间</th>
+					<th width="16%" style="border-style: double;">创建用户</th>
+					<th width="16%" style="border-style: double;">更新时间</th>
+					<th width="16%" style="border-style: double;">更新用户</th>
+				</tr>
+				#foreach($demo in ${demoEOList})
+				<tr align="center">
+					<td><input type="checkbox" value="$!demo.demoId"><input name="demoId" type="hidden"></td>
+					<td><input name="userName" type="text" readonly="readonly"
+						class="input_text" value="$!demo.userName"></td>
+					<td><input name="password" type="text" readonly="readonly"
+						class="input_text" value="$!demo.password"></td>
+					<td>$!demo.createDate</td>
+					<td>$!demo.createUser</td>
+					<td>$!demo.updateDate</td>
+					<td>$!demo.updateUser</td>
+				</tr>
+				#end
+			</table>
 		</fieldset>
 	</form>
 </body>

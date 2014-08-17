@@ -32,6 +32,18 @@ public class DemoDaoImpl extends BaseDao implements IDemoDao {
 		return flag;
 	}
 	
+	@Override
+	public boolean updateDemoByVelo(DemoEO demoEO) {
+		boolean flag = true;
+		try {
+			hibernateTemplate.update(demoEO);
+		} catch (Exception e) {
+			e.printStackTrace();
+			flag = false;
+		}
+		return flag;
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<String> searchUserNameByVelo() {
